@@ -3,8 +3,8 @@ import NavBar from "./components/navbar";
 import Footer from "./components/footer";
 import Home from "./views/home";
 import Blog from "./views/blog";
-import NewBlogPost from "./views/new";
 import { BrowserRouter, Route } from "react-router-dom";
+import NewBlogPost from "./views/new";
 
 function App() {
   return (
