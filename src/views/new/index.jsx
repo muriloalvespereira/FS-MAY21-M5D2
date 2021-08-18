@@ -65,8 +65,9 @@ const NewBlogPost = () => {
         body: imgToSend,
       });
       let data = await response.json();
-      console.log(data, "url da imagem")
-      setImgUrl(data)
+      let dataUrl = data.path
+      console.log(dataUrl, "url da imagem")
+      setImgUrl(dataUrl)
       setImageUrl(id)
     } catch (e) {
       console.log(e);
