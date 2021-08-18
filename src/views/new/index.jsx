@@ -67,23 +67,23 @@ const NewBlogPost = () => {
       let data = await response.json();
       let dataUrl = data.path
       console.log(dataUrl, "url da imagem")
-      setImgUrl(dataUrl)
-      setImageUrl(id)
+      // setImgUrl(dataUrl)
+      setImageUrl(id, dataUrl)
     } catch (e) {
       console.log(e);
       return e;
     }
   };
 
-  const setImageUrl = async (id) => {
-    console.log(imgUrl, "vamos ver")
+  const setImageUrl = async (id, dataUrl) => {
+    console.log(dataUrl, "vamos ver")
     try {
       await fetch("https://strivestudent.herokuapp.com/products/" + id, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(imgUrl)
+        body: JSON.stringify({imageUrl: dataUrl})
       })
     } catch (error) {
       console.log(error)
