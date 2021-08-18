@@ -8,7 +8,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const NewBlogPost = () => {
   const [post, setPost] = useState({});
-  const [imgUrl, setImgUrl] = useState();
+  // const [imgUrl, setImgUrl] = useState();
   const [imgToSend, setImgToSend] = useState("");
 
   const handleChange = (key, value) => {
@@ -175,7 +175,7 @@ const NewBlogPost = () => {
           </Button>
         </Form.Group>
       </Form>
-      <div>{imgUrl}</div>
+      {/* <div>{imgUrl}</div> */}
     </Container>
   );
 };
