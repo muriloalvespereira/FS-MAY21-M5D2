@@ -64,8 +64,6 @@ const NewBlogPost = () => {
       });
       let data = response.json();
       console.log(data)
-      // eslint-disable-next-line
-      window.location = window.location;
     } catch (e) {
       console.log(e);
       return e;
