@@ -64,7 +64,7 @@ const NewBlogPost = () => {
         method: "POST",
         body: imgToSend,
       });
-      let data = await response.json();
+      let data = await response;
       console.log(data, "url da imagem")
       setImgUrl(data)
       setImageUrl(id)
