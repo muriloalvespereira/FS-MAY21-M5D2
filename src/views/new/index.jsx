@@ -8,6 +8,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const NewBlogPost = () => {
   const [post, setPost] = useState({});
+  const [message, setMessage] = useState();
   const [imgToSend, setImgToSend] = useState("");
 
   const handleChange = (key, value) => {
@@ -63,7 +64,7 @@ const NewBlogPost = () => {
         body: imgToSend,
       });
       let data = await response.json();
-      console.log(data.message)
+      setMessage(data.message)
     } catch (e) {
       console.log(e);
       return e;
@@ -154,6 +155,7 @@ const NewBlogPost = () => {
           </Button>
         </Form.Group>
       </Form>
+      <div>{message}</div>
     </Container>
   );
 };
