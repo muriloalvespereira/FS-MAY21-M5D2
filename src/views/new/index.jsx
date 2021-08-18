@@ -63,7 +63,7 @@ const NewBlogPost = () => {
         body: imgToSend,
       });
       let data = await response.json();
-      console.log(data)
+      console.log(data.message)
     } catch (e) {
       console.log(e);
       return e;
