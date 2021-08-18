@@ -56,6 +56,7 @@ const NewBlogPost = () => {
   };
 
   const sendImage = async (id) => {
+    console.log(id, "id do produto")
     console.log(imgToSend);
     try {
       // eslint-disable-next-line
@@ -64,6 +65,7 @@ const NewBlogPost = () => {
         body: imgToSend,
       });
       let data = await response.json();
+      console.log(data, "url da imagem")
       setImgUrl(data)
       setImageUrl(id)
     } catch (e) {
@@ -73,7 +75,6 @@ const NewBlogPost = () => {
   };
 
   const setImageUrl = async (id) => {
-
     try {
       await fetch("https://strivestudent.herokuapp.com/products/" + id, {
         method: "PUT",
