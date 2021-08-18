@@ -62,6 +62,8 @@ const NewBlogPost = () => {
         method: "POST",
         body: imgToSend,
       });
+      let data = response.json();
+      console.log(data)
       // eslint-disable-next-line
       window.location = window.location;
     } catch (e) {
