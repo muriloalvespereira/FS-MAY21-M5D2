@@ -8,7 +8,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const NewBlogPost = () => {
   const [post, setPost] = useState({});
-  const [message, setMessage] = useState();
+  const [imgUrl, setImgUrl] = useState();
   const [imgToSend, setImgToSend] = useState("");
 
   const handleChange = (key, value) => {
@@ -49,7 +49,7 @@ const NewBlogPost = () => {
       body: JSON.stringify(post),
     });
     let data = await response.json();
-    let id = data.id;
+    let id = data._id;
     if (imgToSend) {
       sendImage(id);
     }
@@ -64,12 +64,29 @@ const NewBlogPost = () => {
         body: imgToSend,
       });
       let data = await response.json();
-      setMessage(data.message)
+      setImgUrl(data)
+      setImageUrl(id)
     } catch (e) {
       console.log(e);
       return e;
     }
   };
+
+  const setImageUrl = async (id) => {
+
+    try {
+      await fetch("https://strivestudent.herokuapp.com/products/" + id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(imgUrl)
+      })
+    } catch (error) {
+      console.log(error)
+    }
+
+  } 
 
   return (
     <Container className="new-blog-container" style={{marginTop: "120px"}}>
@@ -155,7 +172,7 @@ const NewBlogPost = () => {
           </Button>
         </Form.Group>
       </Form>
-      <div>{message}</div>
+      <div>{imgUrl}</div>
     </Container>
   );
 };
