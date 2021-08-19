@@ -63,6 +63,7 @@ const Blog = (props) => {
       });
       e.target.reset();
       fetchReviews();
+      setError(false)
     } else {
       setError("Comment and rate is required!")
     }
@@ -158,6 +159,9 @@ const Blog = (props) => {
                   <p>
                     <Button variant="primary" type="submit">
                       Send
+                    </Button>
+                    <Button variant="primary">
+                      Create a PDF
                     </Button>
                   </p>
                 </Form>
