@@ -8,7 +8,6 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const NewBlogPost = () => {
   const [post, setPost] = useState({});
-  // const [imgUrl, setImgUrl] = useState();
   const [imgToSend, setImgToSend] = useState("");
 
   const handleChange = (key, value) => {
@@ -31,7 +30,6 @@ const NewBlogPost = () => {
     let postImage = new FormData();
     postImage.append("image", e.target.files[0]);
     setImgToSend(postImage);
-    console.log(e);
     if (e.target.files[0] !== undefined ) {
       setPost({
         ...post,
@@ -56,8 +54,6 @@ const NewBlogPost = () => {
   };
 
   const sendImage = async (id) => {
-    console.log(id, "id do produto")
-    console.log(imgToSend);
     try {
       // eslint-disable-next-line
       let response = await fetch("https://strivestudent.herokuapp.com/products/addimg", {
@@ -66,8 +62,6 @@ const NewBlogPost = () => {
       });
       let data = await response.json();
       let dataUrl = data.path
-      console.log(dataUrl, "url da imagem")
-      // setImgUrl(dataUrl)
       setImageUrl(id, dataUrl)
     } catch (e) {
       console.log(e);
@@ -76,7 +70,6 @@ const NewBlogPost = () => {
   };
 
   const setImageUrl = async (id, dataUrl) => {
-    console.log(dataUrl, "vamos ver")
     try {
       await fetch("https://strivestudent.herokuapp.com/products/" + id, {
         method: "PUT",
@@ -175,7 +168,6 @@ const NewBlogPost = () => {
           </Button>
         </Form.Group>
       </Form>
-      {/* <div>{imgUrl}</div> */}
     </Container>
   );
 };

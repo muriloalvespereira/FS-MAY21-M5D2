@@ -24,7 +24,7 @@ const Blog = (props) => {
 
   const fetchProducts = async () => {
     const { id } = props.match.params;
-    let response = await fetch("http://localhost:3005/products/" + id, {
+    let response = await fetch("https://strivestudent.herokuapp.com/products/" + id, {
       method: "GET",
     });
     let data = await response.json();
@@ -38,7 +38,7 @@ const Blog = (props) => {
 
   const fetchReviews = async () => {
     const { id } = props.match.params;
-    let response = await fetch("http://localhost:3005/reviews/product/" + id, {
+    let response = await fetch("https://strivestudent.herokuapp.com/reviews/product/" + id, {
       method: "GET",
     });
     let data = await response.json();
@@ -54,7 +54,7 @@ const Blog = (props) => {
     e.preventDefault();
     if (review.rate && review.comment) {
       const { id } = props.match.params;
-      await fetch("http://localhost:3005/reviews/" + id, {
+      await fetch("https://strivestudent.herokuapp.com/reviews/" + id, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
