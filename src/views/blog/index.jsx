@@ -160,7 +160,7 @@ const Blog = (props) => {
                     <Button variant="primary" type="submit">
                       Send
                     </Button>
-                    <Button variant="primary">
+                    <Button variant="primary" style={{marginLeft: "20px"}}>
                       Create a PDF
                     </Button>
                   </p>
