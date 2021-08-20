@@ -29,7 +29,7 @@ const Blog = (props) => {
       method: "GET",
     })
     if(response.ok){
-      window.open(`https://strivestudent.herokuapp.com/products/pdf/${id}.pdf`,'_blank');
+      window.open(`https://strivestudent.herokuapp.com/products/pdf/${id}`,'_blank');
     }
   
     // if (response.ok) {
