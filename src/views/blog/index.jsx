@@ -23,22 +23,18 @@ const Blog = (props) => {
 
   console.log(review);
 
-  const getPDF = async () => {
-    const { id } = props.match.params;
-   const response = await fetch("https://strivestudent.herokuapp.com/products/pdf/" + id, {
-      method: "GET",
-    })
-    if(response.ok){
-      window.open(`https://strivestudent.herokuapp.com/products/pdf/${id}`,'_blank');
-    }
-  
-    // if (response.ok) {
-    //   setPost(data[0]);
-    //   setLoading(false);
-    // } else {
-    //   props.history.push("/404");
-    // }
-  };
+  const { id } = props.match.params;
+
+  // const getPDF = async () => {
+  //   const { id } = props.match.params;
+  //  const response = await fetch("https://strivestudent.herokuapp.com/products/pdf/" + id, {
+  //     method: "GET",
+  //   })
+  //   if(response.ok){
+  //     window.open(`https://strivestudent.herokuapp.com/products/pdf/${id}`,'_blank');
+  //   }
+  // };
+
   const fetchProducts = async () => {
     const { id } = props.match.params;
     let response = await fetch("https://strivestudent.herokuapp.com/products/" + id, {
@@ -177,9 +173,11 @@ const Blog = (props) => {
                     <Button variant="primary" type="submit">
                       Send
                     </Button>
-                    <Button variant="primary" style={{marginLeft: "20px"}} onClick={getPDF}>
-                      Create a PDF
-                    </Button>
+                    <a href={`https://strivestudent.herokuapp.com/products/pdf/${id}`}>
+                      <Button variant="primary" style={{marginLeft: "20px"}} >
+                        Create a PDF
+                      </Button>
+                    </a>
                   </p>
                 </Form>
               </div>
