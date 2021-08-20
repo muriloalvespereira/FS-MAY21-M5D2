@@ -13,6 +13,7 @@ import {
 import { withRouter } from "react-router";
 import BlogAuthor from "../../components/blog/blog-author";
 import "./styles.css";
+
 const Blog = (props) => {
   const [post, setPost] = useState();
   const [reviews, setReviews] = useState([]);
@@ -22,6 +23,22 @@ const Blog = (props) => {
 
   console.log(review);
 
+  const getPDF = async () => {
+    const { id } = props.match.params;
+   const response = await fetch("https://strivestudent.herokuapp.com/products/pdf/" + id, {
+      method: "GET",
+    })
+    if(response.ok){
+      window.open(`/pdf/${id}.pdf`,'_blank');
+    }
+  
+    // if (response.ok) {
+    //   setPost(data[0]);
+    //   setLoading(false);
+    // } else {
+    //   props.history.push("/404");
+    // }
+  };
   const fetchProducts = async () => {
     const { id } = props.match.params;
     let response = await fetch("https://strivestudent.herokuapp.com/products/" + id, {
@@ -101,7 +118,7 @@ const Blog = (props) => {
   } else {
     return (
       <div className="blog-details-root" style={{ marginTop: "150px" }}>
-        <Container>
+        {post&& <Container>
           <Row>
             <Col className="d-flex">
               <div>
@@ -160,7 +177,7 @@ const Blog = (props) => {
                     <Button variant="primary" type="submit">
                       Send
                     </Button>
-                    <Button variant="primary" style={{marginLeft: "20px"}}>
+                    <Button variant="primary" style={{marginLeft: "20px"}} onClick={getPDF}>
                       Create a PDF
                     </Button>
                   </p>
@@ -168,7 +185,7 @@ const Blog = (props) => {
               </div>
             </Col>
           </Row>
-        </Container>
+        </Container>}
       </div>
     );
   }
