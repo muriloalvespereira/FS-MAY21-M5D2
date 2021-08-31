@@ -42,7 +42,7 @@ const Blog = (props) => {
     });
     let data = await response.json();
     if (response.ok) {
-      setPost(data[0]);
+      setPost(data);
       setLoading(false);
     } else {
       props.history.push("/404");
