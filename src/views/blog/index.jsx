@@ -16,7 +16,7 @@ import "./styles.css";
 
 const Blog = (props) => {
   const [post, setPost] = useState();
-  const [reviews, setReviews] = useState([]);
+  // const [reviews, setReviews] = useState([]);
   const [review, setReview] = useState({});
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
@@ -75,7 +75,7 @@ const Blog = (props) => {
         body: JSON.stringify(review),
       });
       e.target.reset();
-      fetchReviews();
+      fetchProducts();
       setError(false)
     } else {
       setError("Comment and rate is required!")
@@ -91,7 +91,7 @@ const Blog = (props) => {
 
   useEffect(() => {
     fetchProducts();
-    fetchReviews();
+    fetchProducts();
   }, []);
 
   // state = {
