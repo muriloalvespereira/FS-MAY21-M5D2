@@ -142,6 +142,7 @@ const Blog = (props) => {
                 </div>
               </div>
               <div className="mt-5" style={{ paddingLeft: "50px" }}>
+                <h3>Comments</h3>
                 {post.comments.map((review) => (
                   <ListGroup key={review._id}>
                     <ListGroupItem>{review.comment}</ListGroupItem>
