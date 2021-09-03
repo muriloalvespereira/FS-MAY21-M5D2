@@ -25,6 +25,21 @@ const Blog = (props) => {
 
   const { id } = props.match.params;
 
+
+  const addtoCart =async ()=>{
+    const carts= [{productId: id, qty: 1}]
+    localStorage.setItem('cart_item', carts);
+    const result= await fetch("https://strivestudent.herokuapp.com/carts/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(carts),
+      });
+      if(result){
+        console.log(result)
+      }
+  }
   // const getPDF = async () => {
   //   const { id } = props.match.params;
   //  const response = await fetch("https://strivestudent.herokuapp.com/products/pdf/" + id, {
@@ -130,6 +145,9 @@ const Blog = (props) => {
                 <div className="blog-details-container">
                   <div className="blog-details-author">
                     <BlogAuthor {...post} />
+                    <Button onClick={addtoCart} className="blog-navbar-add-button bg-dark" size="lg">
+                    Add to Cart
+                    </Button>
                     <div
                       className="border-top pt-3 mt-3"
                       dangerouslySetInnerHTML={{ __html: post.description }}
