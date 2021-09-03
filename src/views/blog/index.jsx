@@ -49,19 +49,19 @@ const Blog = (props) => {
     }
   };
 
-  const fetchReviews = async () => {
-    const { id } = props.match.params;
-    let response = await fetch("https://strivestudent.herokuapp.com/reviews/product/" + id, {
-      method: "GET",
-    });
-    let data = await response.json();
-    if (response.ok) {
-      setReviews(data);
-      setLoading(false);
-    } else {
-      props.history.push("/404");
-    }
-  };
+  // const fetchReviews = async () => {
+  //   const { id } = props.match.params;
+  //   let response = await fetch("https://strivestudent.herokuapp.com/reviews/product/" + id, {
+  //     method: "GET",
+  //   });
+  //   let data = await response.json();
+  //   if (response.ok) {
+  //     setReviews(data);
+  //     setLoading(false);
+  //   } else {
+  //     props.history.push("/404");
+  //   }
+  // };
 
   const postReview = async (e) => {
     e.preventDefault();
@@ -142,7 +142,7 @@ const Blog = (props) => {
                 </div>
               </div>
               <div className="mt-5" style={{ paddingLeft: "50px" }}>
-                {reviews.map((review) => (
+                {post.comments.map((review) => (
                   <ListGroup key={review._id}>
                     <ListGroupItem>{review.comment}</ListGroupItem>
                   </ListGroup>
