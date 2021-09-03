@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { Container, Navbar, Button } from "react-bootstrap";
+import { Container, Navbar, Button, Dropdown, DropdownButton, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import "./styles.css";
+import { FaShoppingCart } from "react-icons/fa"
 export default class NavBar extends Component {
   render() {
     return (
@@ -11,6 +12,14 @@ export default class NavBar extends Component {
           <Navbar.Brand as={Link} to="/">
             <img className="blog-navbar-brand" alt="logo" src={logo} />
           </Navbar.Brand>
+          <DropdownButton variant="secondary" id="dropdown-basic-button" title={<FaShoppingCart />} >
+
+            <Row>
+              <Col className="col-sm-3">Qty</Col>
+              <Col className="col-sm-5"> Name</Col>
+              <Col className="col-sm-3 "> Price</Col>
+            </Row>
+          </DropdownButton>
 
           <Button
             as={Link}
@@ -18,6 +27,7 @@ export default class NavBar extends Component {
             className="blog-navbar-add-button bg-dark"
             size="lg"
           >
+
             {/* <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -31,7 +41,7 @@ export default class NavBar extends Component {
             Add Product
           </Button>
         </Container>
-      </Navbar>
+      </Navbar >
     );
   }
 }
